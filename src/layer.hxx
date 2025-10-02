@@ -3,7 +3,7 @@
 
 struct gui_layer {
     /// Callback to run before the main loop
-    virtual void init() {}
+    virtual void init(GLFWwindow* window) {}
 
     /// Per-frame state update callback
     virtual void update(GLFWwindow* window) {}

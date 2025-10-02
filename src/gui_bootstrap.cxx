@@ -79,15 +79,11 @@ bool gui_app::run(const char* window_title) noexcept {
     }
 
     for (auto& layer : this->layers) {
-        layer.init();
+        layer->init(window);
     }
 
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
-
-        for (auto& layer : this->layers) {
-            layer.update(window);
-        }
 
         if (glfwGetWindowAttrib(window, GLFW_ICONIFIED) != 0) {
             // Skip rendering if minimized
@@ -95,10 +91,14 @@ bool gui_app::run(const char* window_title) noexcept {
             continue;
         }
 
+        for (auto& layer : this->layers) {
+            layer->update(window);
+        }
+
         // Rendering
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         for (auto& layer : this->layers) {
-            layer.render(window);
+            layer->render(window);
         }
 
 
@@ -107,7 +107,7 @@ bool gui_app::run(const char* window_title) noexcept {
 
     // Cleanup
     for (auto& layer : this->layers) {
-        layer.destroy();
+        layer->destroy();
     }
 
     glfwTerminate();

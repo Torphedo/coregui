@@ -16,4 +16,5 @@ add_library(coregui STATIC
     ${extra_sources}
 )
 
-target_include_directories(coregui PUBLIC ${bobtail_SOURCE_DIR} lib/glad/include lib/glfw/include)
+target_include_directories(coregui PUBLIC ./src lib/glad/include lib/glfw/include)
+target_link_libraries(coregui PUBLIC glfw)
