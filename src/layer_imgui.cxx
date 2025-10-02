@@ -45,8 +45,6 @@ void layer_imgui::update(GLFWwindow* window) {
 
     // Make the entire window a giant docking space
     ImGui::DockSpaceOverViewport();
-
-    ImGui::ShowDemoWindow();
 }
 
 void layer_imgui::render(GLFWwindow* window) {
