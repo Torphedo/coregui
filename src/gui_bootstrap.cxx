@@ -92,13 +92,17 @@ bool gui_app::run(const char* window_title) noexcept {
         }
 
         for (auto& layer : this->layers) {
-            layer->update(window);
+            if (layer->active) {
+                layer->update(window);
+            }
         }
 
         // Rendering
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         for (auto& layer : this->layers) {
-            layer->render(window);
+            if (layer->active) {
+                layer->render(window);
+            }
         }
 
 

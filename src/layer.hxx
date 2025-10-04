@@ -2,6 +2,8 @@
 #include <GLFW/glfw3.h>
 
 struct gui_layer {
+    bool active = true;
+
     /// Callback to run before the main loop
     virtual void init(GLFWwindow* window) {}
 
