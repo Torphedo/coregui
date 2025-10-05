@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+#include <memory>
 #include <GLFW/glfw3.h>
 
 struct gui_layer {
